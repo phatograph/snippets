@@ -197,7 +197,6 @@ source {
   overflow-x: hidden;
   overflow-y: auto;
 
-
   @media (max-width: $screen-mobiles) {
     margin-right: calc(var(--app-padding) * -1);
     margin-left: calc(var(--app-padding) * -1);
