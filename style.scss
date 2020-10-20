@@ -93,6 +93,7 @@ button {
   -moz-osx-font-smoothing: antialiased;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
 }
 
 *,
@@ -185,4 +186,47 @@ source {
   display: grid;
   grid-template-rows: 1fr max-content;
   min-height: 100vh;
+}
+
+.HorizontalScrollable {
+  @include no-scrollbar;
+
+  display: grid;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+
+  @media (max-width: $screen-mobiles) {
+    margin-right: calc(var(--app-padding) * -1);
+    margin-left: calc(var(--app-padding) * -1);
+  }
+
+  &__wrapper {
+    @include no-scrollbar;
+
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding: var(--app-padding);
+
+    &::before,
+    &::after {
+      @media (max-width: $screen-mobiles) {
+        content: '';
+        display: block;
+        flex: 0 0 var(--app-padding);
+        width: var(--app-padding);
+        height: 1px;
+      }
+    }
+  }
+  
+  &__item {
+    scroll-snap-align: start;
+  }
 }
