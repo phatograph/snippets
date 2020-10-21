@@ -58,7 +58,7 @@ $items:
   --global-space: 20px;
   --app-width: 1080px;
   --app-padding: calc(var(--global-space) * 1.25);
-  --Nav-height: 80px;
+  --webkit-fill-available: 100vh;
 }
 
 html {
@@ -186,6 +186,19 @@ source {
   display: grid;
   grid-template-rows: 1fr max-content;
   min-height: 100vh;
+  
+  &--webkit-fill-available {
+    --webkit-fill-available: -webkit-fill-available;
+  }
+}
+
+.WebkitFillAvailable {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: -webkit-fill-available;
+  pointer-events: none;
 }
 
 .HorizontalScrollable {
