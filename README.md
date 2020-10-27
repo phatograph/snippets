@@ -19,3 +19,43 @@ export const formInputsToObject = ({elements}) => {
   )
 }
 ```
+
+```
+  React.useEffect(() => {
+    window.addEventListener("resize", onResize)
+
+    return () => {
+      window.removeEventListener("resize", onResize)
+    }
+  }, [svgWidth])
+```
+
+```
+  const observer = React.useRef()
+
+  React.useEffect(() => {
+    observer.current = new IntersectionObserver(
+      (elements) => {
+        const $target = first(elements)
+        // get($target, "intersectionRatio")
+      },
+      {
+        rootMargin: "0px 0px",
+      }
+    )
+  }, [])
+
+  React.useEffect(() => {
+    const $el = document.querySelector(".AppPublisher__handle")
+
+    if (observer.current && $el) {
+      observer.current.observe($el)
+    }
+
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect()
+      }
+    }
+  }, [])
+```
