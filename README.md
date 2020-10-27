@@ -20,7 +20,7 @@ export const formInputsToObject = ({elements}) => {
 }
 ```
 
-```
+```js
   React.useEffect(() => {
     window.addEventListener("resize", onResize)
 
@@ -30,7 +30,7 @@ export const formInputsToObject = ({elements}) => {
   }, [svgWidth])
 ```
 
-```
+```js
   const observer = React.useRef()
 
   React.useEffect(() => {
