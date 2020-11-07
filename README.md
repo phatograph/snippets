@@ -31,31 +31,32 @@ export const formInputsToObject = ({elements}) => {
 ```
 
 ```js
-  const observer = React.useRef()
+  const ___observer = React.useRef()
+  const ___$el = React.useRef()
 
   React.useEffect(() => {
-    observer.current = new IntersectionObserver(
+    ___observer.current = new IntersectionObserver(
       (elements) => {
         const $target = first(elements)
-        // get($target, "intersectionRatio")
+
+        console.log(get($target, 'intersectionRatio'))
       },
       {
-        rootMargin: "0px 0px",
+        rootMargin: '0px 0px',
       }
     )
   }, [])
 
   React.useEffect(() => {
-    const $el = document.querySelector(".AppPublisher__handle")
-
-    if (observer.current && $el) {
-      observer.current.observe($el)
+    if (___observer.current && ___$el.current) {
+      ___observer.current.observe(___$el.current)
     }
 
     return () => {
-      if (observer.current) {
-        observer.current.disconnect()
+      if (___observer.current) {
+        ___observer.current.disconnect()
       }
     }
   }, [])
+
 ```
