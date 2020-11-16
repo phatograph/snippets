@@ -63,6 +63,61 @@ $items:
   }
 }
 
+@mixin modal {
+  --modal-pe: none;
+
+  display: grid;
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: opacity 0.2s;
+  transition-timing-function: ease-in-out;
+  opacity: 0;
+  pointer-events: var(--modal-pe);
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  will-change: opacity;
+
+  &--active {
+    --modal-pe: auto;
+
+    opacity: 1;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(85, 61, 61, 0.55);
+    cursor: pointer;
+  }
+
+  &__panel {
+    --app-width: 567px;
+    --app-padding: 12px;
+
+    @extend .container;
+
+    position: relative;
+    z-index: 1;
+    margin: 10vh auto;
+
+    &__wrapper {
+      padding: 25px 18px 35px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+  }
+}
+
 :root {
   --global-space: 20px;
   --app-width: 1080px;
