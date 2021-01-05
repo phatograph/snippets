@@ -1,5 +1,17 @@
 ## Snippets
 
+```jsx
+// For pages without responsiveness:
+<meta name="viewport" content="width=1440, viewport-fit=cover" />
+
+//If you want inputs to be zoomed in when focus:
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+//Otherwise:
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+```
+
 ```js
 // <input type="text" name="publisher_name" value="a" />
 // <input type="text" name="purchaser_name" value="b" />
