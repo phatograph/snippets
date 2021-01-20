@@ -72,3 +72,44 @@ export const formInputsToObject = ({elements}) => {
   }, [])
 
 ```
+
+```js
+<img
+  ref={$img}
+  className='FaceBlur__slider__img'
+  alt='FaceBlur__slider__img'
+  src='/images/FaceBlur__slider__img--blurred.jpg'
+/>
+
+<a
+  draggable
+  onDragStart={(e) => {
+    e.dataTransfer.setDragImage($blank.current, 0, 0)
+
+    onDragStart({_clientX: e.clientX})
+  }}
+  onDrag={(e) => {
+    onDrag({
+      _clientX: e.clientX,
+    })
+  }}
+  onDragEnd={(e) => {
+    onDragEnd({
+      _clientX: e.clientX,
+    })
+  }}
+  onTouchStart={(e) => {
+    onDragStart({_clientX: get(e, 'touches[0].clientX')})
+  }}
+  onTouchMove={(e) => {
+    onDrag({
+      _clientX: get(e, 'touches[0].clientX'),
+    })
+  }}
+  onTouchEnd={(e) => {
+    onDragEnd({
+      _clientX: get(e, 'changedTouches[0].clientX'),
+    })
+  }}
+/>
+```
