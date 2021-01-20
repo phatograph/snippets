@@ -12,7 +12,7 @@
 
 ```
 
-```js
+```jsx
 // <input type="text" name="publisher_name" value="a" />
 // <input type="text" name="purchaser_name" value="b" />
 // => {publisher_name: "a", purchaser_name: "b"}
@@ -32,7 +32,7 @@ export const formInputsToObject = ({elements}) => {
 }
 ```
 
-```js
+```jsx
   React.useEffect(() => {
     window.addEventListener("resize", onResize)
 
@@ -42,7 +42,7 @@ export const formInputsToObject = ({elements}) => {
   }, [svgWidth])
 ```
 
-```js
+```jsx
   const ___observer = React.useRef()
   const ___$el = React.useRef()
 
@@ -73,7 +73,7 @@ export const formInputsToObject = ({elements}) => {
 
 ```
 
-```js
+```jsx
 <img
   ref={$img}
   className='FaceBlur__slider__img'
@@ -112,4 +112,31 @@ export const formInputsToObject = ({elements}) => {
     })
   }}
 />
+```
+
+```jsx
+<dl
+  className='Index__how-to-order__dl'
+  onTouchStart={(e) => {
+    clientX.current = get(e, 'touches[0].clientX')
+  }}
+  onTouchEnd={(e) => {
+    if (
+      Number(clientX.current) >
+      Number(get(e, 'changedTouches[0].clientX'))
+    ) {
+      if (__indexHowToOrder < 2) {
+        __indexHowToOrderSet(__indexHowToOrder + 1)
+      }
+    } else if (
+      Number(clientX.current) <
+      Number(get(e, 'changedTouches[0].clientX'))
+    ) {
+      if (__indexHowToOrder > 0) {
+        __indexHowToOrderSet(__indexHowToOrder - 1)
+      }
+    }
+  }}
+>
+</dl>
 ```
