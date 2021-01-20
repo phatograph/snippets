@@ -118,18 +118,18 @@ export const formInputsToObject = ({elements}) => {
 <dl
   className='Index__how-to-order__dl'
   onTouchStart={(e) => {
-    clientX.current = get(e, 'touches[0].clientX')
+    ___clientX.current = get(e, 'touches[0].clientX')
   }}
   onTouchEnd={(e) => {
     if (
-      Number(clientX.current) >
+      Number(___clientX.current) >
       Number(get(e, 'changedTouches[0].clientX'))
     ) {
       if (__indexHowToOrder < 2) {
         __indexHowToOrderSet(__indexHowToOrder + 1)
       }
     } else if (
-      Number(clientX.current) <
+      Number(___clientX.current) <
       Number(get(e, 'changedTouches[0].clientX'))
     ) {
       if (__indexHowToOrder > 0) {
