@@ -140,3 +140,58 @@ export const formInputsToObject = ({elements}) => {
 >
 </dl>
 ```
+
+```jsx
+const MyApp = ({Component, pageProps}: AppProps) => {
+  const ___$WebkitFillAvailable = React.useRef<HTMLDivElement>()
+
+  const [__isWebkitFillAvailable, __isWebkitFillAvailableSet] =
+    React.useState(false)
+
+  React.useEffect(() => {
+    smoothscroll.polyfill()
+  }, [])
+
+  React.useEffect(() => {
+    if (___$WebkitFillAvailable?.current?.clientHeight > 0) {
+      __isWebkitFillAvailableSet(true)
+    }
+  }, [])
+
+  const title = 'Ravebit Bakery'
+  const description = 'Ravebit Bakery'
+
+  return (
+    <React.Fragment>
+      <Head>
+        <title>{title}</title>
+        <meta name='description' content={description} />
+
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1, maximum-scale=1'
+          // content='width=1300, viewport-fit=cover'
+        />
+
+        <meta property='og:title' content={title} />
+        <meta property='og:description' content={description} />
+        <meta property='og:image' content='/images/og.png' />
+
+        <link rel='icon' type='image/png' href='/images/pat.png' />
+      </Head>
+
+      <div
+        className={className('Layout', {
+          'Layout--webkit-fill-available': __isWebkitFillAvailable,
+        })}
+      >
+        <Component
+          {...{
+            ...pageProps,
+          }}
+        />
+      </div>
+    </React.Fragment>
+  )
+}
+```
