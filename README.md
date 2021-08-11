@@ -33,6 +33,27 @@ export const formInputsToObject = ({elements}) => {
 ```
 
 ```jsx
+  const getWindowWidth = () => {
+    return (
+      window?.innerWidth ||
+      document?.documentElement?.clientWidth ||
+      document?.body?.clientWidth
+    )
+  }
+
+  const ___onResizeTO = React.useRef<any>()
+  const onResize = () => {
+    const _w = getWindowWidth()
+
+    if (_w != ___windowWidth.current) {
+      ___windowWidth.current = _w
+
+      window.clearTimeout(___onResizeTO.current)
+      ___onResizeTO.current = window.setTimeout(() => {
+      }, 200)
+    }
+  }
+
   React.useEffect(() => {
     window.addEventListener("resize", onResize)
 
