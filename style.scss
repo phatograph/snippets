@@ -160,6 +160,10 @@ button {
   touch-action: manipulation;
 }
 
+textarea {
+  resize: vertical;
+}
+
 *,
 *::before,
 *::after {
