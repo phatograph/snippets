@@ -318,3 +318,8 @@ source {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.Sticky {
+  position: sticky;
+  position: -webkit-sticky;
+}
