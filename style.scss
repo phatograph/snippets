@@ -245,6 +245,7 @@ source {
 }
 
 .container {
+  width: 100%;
   max-width: calc(var(--app-padding) * 2 + var(--app-width));
   margin: 0 auto;
   padding: 0 var(--app-padding);
