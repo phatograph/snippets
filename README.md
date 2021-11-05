@@ -216,3 +216,29 @@ const MyApp = ({Component, pageProps}: AppProps) => {
   )
 }
 ```
+
+```jsx
+                <svg
+                  className='ProductForm__images__body__label__svg'
+                  viewBox='0 0 1 1'
+                  onDrop={(e) => {
+                    e.preventDefault()
+                    __isFileHoveringSet(false)
+
+                    const _file = e?.dataTransfer?.files?.item?.(0)
+
+                    if (['image/png', 'image/jpeg'].includes(_file?.type)) {
+                      __filesSet([...__files, _file])
+                    }
+                  }}
+                  onDragOver={(e) => {
+                    e.preventDefault()
+                  }}
+                  onDragEnter={() => {
+                    __isFileHoveringSet(true)
+                  }}
+                  onDragLeave={() => {
+                    __isFileHoveringSet(false)
+                  }}
+                />
+```
