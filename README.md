@@ -218,6 +218,10 @@ const MyApp = ({Component, pageProps}: AppProps) => {
 ```
 
 ```jsx
+window.scroll({ top: 2500, left: 0, behavior: 'smooth' })
+```
+
+```jsx
 <svg
   className='ProductForm__images__body__label__svg'
   viewBox='0 0 1 1'
