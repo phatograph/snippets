@@ -137,24 +137,26 @@ export const formInputsToObject = ({elements}) => {
 
 ```jsx
 <dl
-  className='Index__how-to-order__dl'
+  className="Presale__section__dl"
   onTouchStart={(e) => {
-    ___clientX.current = get(e, 'touches[0].clientX')
+    ___clientX.current = e?.touches?.[0].clientX
   }}
   onTouchEnd={(e) => {
     if (
-      Number(___clientX.current) >
-      Number(get(e, 'changedTouches[0].clientX'))
+      Number(___clientX.current) -
+        Number(e?.changedTouches?.[0]?.clientX) >
+      swipeThreshold
     ) {
-      if (__indexHowToOrder < 2) {
-        __indexHowToOrderSet(__indexHowToOrder + 1)
+      if (__activeIndexSTA + 1 < section.icos.length) {
+        __activeIndexSTASet(__activeIndexSTA + 1)
       }
     } else if (
-      Number(___clientX.current) <
-      Number(get(e, 'changedTouches[0].clientX'))
+      Number(___clientX.current) -
+        Number(e.changedTouches?.[0]?.clientX) <
+      swipeThreshold * -1
     ) {
-      if (__indexHowToOrder > 0) {
-        __indexHowToOrderSet(__indexHowToOrder - 1)
+      if (__activeIndexSTA > 0) {
+        __activeIndexSTASet(__activeIndexSTA - 1)
       }
     }
   }}
