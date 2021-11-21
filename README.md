@@ -136,6 +136,9 @@ export const formInputsToObject = ({elements}) => {
 ```
 
 ```jsx
+const ___clientX = React.useRef()
+const swipeThreshold = 50
+
 <dl
   className="Presale__section__dl"
   onTouchStart={(e) => {
