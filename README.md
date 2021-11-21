@@ -139,32 +139,28 @@ export const formInputsToObject = ({elements}) => {
 const ___clientX = React.useRef()
 const swipeThreshold = 50
 
-<dl
-  className="Presale__section__dl"
+<div
+  className="BlogShow__related__dl__wrapper-outer"
   onTouchStart={(e) => {
     ___clientX.current = e?.touches?.[0].clientX
   }}
   onTouchEnd={(e) => {
-    if (
-      Number(___clientX.current) -
-        Number(e?.changedTouches?.[0]?.clientX) >
-      swipeThreshold
-    ) {
-      if (__activeIndexSTA + 1 < section.icos.length) {
-        __activeIndexSTASet(__activeIndexSTA + 1)
+    if (Number(___clientX.current) - Number(e?.changedTouches?.[0]?.clientX) > swipeThreshold) {
+      if (__relatedIndexSmol + 1 < ARTICLES?.length) {
+        __relatedIndexSmolSet(__relatedIndexSmol + 1)
+      } else {
+        __relatedIndexSmolSet(0)
       }
-    } else if (
-      Number(___clientX.current) -
-        Number(e.changedTouches?.[0]?.clientX) <
-      swipeThreshold * -1
-    ) {
-      if (__activeIndexSTA > 0) {
-        __activeIndexSTASet(__activeIndexSTA - 1)
+    } else if (Number(___clientX.current) - Number(e.changedTouches?.[0]?.clientX) < swipeThreshold * -1) {
+      if (__relatedIndexSmol > 0) {
+        __relatedIndexSmolSet(__relatedIndexSmol - 1)
+      } else {
+        __relatedIndexSmolSet(ARTICLES?.length - 1)
       }
     }
   }}
 >
-</dl>
+</div>
 ```
 
 ```jsx
