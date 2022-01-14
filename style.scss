@@ -155,8 +155,9 @@ button {
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: antialiased;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: none;  // https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   touch-action: manipulation;
 }
 
