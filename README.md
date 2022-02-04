@@ -250,3 +250,9 @@ window.history.pushState(null, null, '#contact')
   }}
 />
 ```
+
+```jsx
+import ReactDOMServer from 'react-dom/server';
+
+ReactDOMServer.renderToStaticMarkup(element)
+```
