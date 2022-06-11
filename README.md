@@ -256,3 +256,12 @@ import ReactDOMServer from 'react-dom/server';
 
 ReactDOMServer.renderToStaticMarkup(element)
 ```
+
+```jsx
+            <img
+              className='Index__hero__img'
+              alt='Index__hero__img'
+              src='/images/Index__hero__img.png'
+              srcSet='/images/Index__hero__img--2x.png 2x'
+            />
+```
