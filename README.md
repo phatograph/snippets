@@ -265,3 +265,153 @@ ReactDOMServer.renderToStaticMarkup(element)
               srcSet='/images/Index__hero__img--2x.png 2x'
             />
 ```
+
+```jsx
+import React from 'react'
+import {find} from 'lodash'
+import className from 'classnames'
+import {useRouter} from 'next/router'
+import pagination from 'pagination'
+import Link from 'next/link'
+
+const Pagination = ({}) => {
+  const router = useRouter()
+
+  const current = router?.query?.page ?? 1
+  const paginator = new pagination.SearchPaginator({
+    current,
+    totalResult: 9 * 13,
+    rowsPerPage: 9,
+    pageLinks: 3,
+  })
+
+  const paginatorData = paginator.getPaginationData()
+
+  const LinkWithPage = ({page, children}) => {
+    return (
+      <Link
+        href={{
+          query: {
+            ...router?.query,
+            page,
+          },
+        }}
+      >
+        {children}
+      </Link>
+    )
+  }
+
+  return (
+    <div className='Pagination'>
+      <LinkWithPage page={paginatorData?.first}>
+        <a
+          className={className('Pagination__a', {
+            'Pagination__a--disabled': !paginatorData?.first,
+          })}
+        >
+          <img
+            className='Pagination__a__img'
+            src='/images/Pagination__a__img--first.svg'
+          />
+        </a>
+      </LinkWithPage>
+
+      <LinkWithPage page={paginatorData?.previous}>
+        <a
+          className={className('Pagination__a', {
+            'Pagination__a--disabled': !paginatorData?.previous,
+          })}
+        >
+          <img
+            className='Pagination__a__img'
+            src='/images/Pagination__a__img--prev.svg'
+          />
+        </a>
+      </LinkWithPage>
+
+      <div className='Pagination__numbers'>
+        {!find(paginatorData?.range, (x) => x == 1) && (
+          <LinkWithPage page={paginatorData?.first}>
+            <a className='Pagination__numbers__a Pagination__numbers__a--first'>
+              1
+            </a>
+          </LinkWithPage>
+        )}
+
+        {!find(paginatorData?.range, (x) => x == 2) &&
+          paginatorData?.range?.length > 0 && (
+            <span className='Pagination__numbers__dots'>
+              <img
+                className='Pagination__numbers__dots__img'
+                src='/images/Pagination__numbers__dots__img.svg'
+              />
+            </span>
+          )}
+
+        {(paginatorData?.range || []).map((x: any, i: any) => (
+          <LinkWithPage page={x} key={i}>
+            <a
+              className={className('Pagination__numbers__a', {
+                'Pagination__numbers__a--active': paginatorData?.current == x,
+              })}
+            >
+              {x}
+            </a>
+          </LinkWithPage>
+        ))}
+
+        {!find(
+          paginatorData?.range,
+          (x) => x == paginatorData?.pageCount - 1
+        ) &&
+          paginatorData?.range?.length > 0 && (
+            <span className='Pagination__numbers__dots'>
+              <img
+                className='Pagination__numbers__dots__img'
+                src='/images/Pagination__numbers__dots__img.svg'
+              />
+            </span>
+          )}
+
+        {!find(paginatorData?.range, (x) => x == paginatorData?.pageCount) &&
+          paginatorData?.range?.length > 0 && (
+            <LinkWithPage page={paginatorData?.last}>
+              <a className='Pagination__numbers__a Pagination__numbers__a--last'>
+                {paginatorData?.last}
+              </a>
+            </LinkWithPage>
+          )}
+      </div>
+
+      <LinkWithPage page={paginatorData?.next}>
+        <a
+          className={className('Pagination__a', {
+            'Pagination__a--disabled': !paginatorData?.next,
+          })}
+        >
+          <img
+            className='Pagination__a__img'
+            src='/images/Pagination__a__img--next.svg'
+          />
+        </a>
+      </LinkWithPage>
+
+      <LinkWithPage page={paginatorData?.last}>
+        <a
+          className={className('Pagination__a', {
+            'Pagination__a--disabled': !paginatorData?.last,
+          })}
+        >
+          <img
+            className='Pagination__a__img'
+            src='/images/Pagination__a__img--last.svg'
+          />
+        </a>
+      </LinkWithPage>
+    </div>
+  )
+}
+
+export default Pagination
+```
