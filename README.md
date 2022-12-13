@@ -64,15 +64,15 @@ export const formInputsToObject = ({elements}) => {
 ```
 
 ```jsx
-  const ___observer = React.useRef()
+  const ___observer = React.useRef<IntersectionObserver>()
   const ___$el = React.useRef()
 
   React.useEffect(() => {
     ___observer.current = new IntersectionObserver(
       (elements) => {
-        const $target = first(elements)
+        const $target = elements?.[0]
 
-        console.log(get($target, 'intersectionRatio'))
+        console.log($target?.intersectionRatio)
       },
       {
         rootMargin: '0px 0px',
