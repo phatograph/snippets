@@ -9,7 +9,7 @@ the idea is the same, but for naming you may nest Elements
 and have their depth as deep as you like.
 
 Try not to use native-nest (e.g. `.Block { p { … } }`) as much as you can.
-Only do it when you really need to override something (e.g. check out `.BuyerAdminOrdersIndex .Placeholder`).
+Only do it when you really need to override something.
 
 As for an example, here goes;
 
