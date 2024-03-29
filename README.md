@@ -268,6 +268,26 @@ ReactDOMServer.renderToStaticMarkup(element)
 ```
 
 ```jsx
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        __isActive &&
+        ___$el.current &&
+        !___$el.current.contains(event.target as any)
+      ) {
+        __isActiveSet(false)
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }, [__isActive])
+```
+
+```jsx
 import React from 'react'
 import {find} from 'lodash'
 import className from 'classnames'
