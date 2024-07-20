@@ -33,6 +33,14 @@ export const formInputsToObject = ({elements}) => {
 ```
 
 ```jsx
+                const elements = (e?.target as HTMLFormElement)?.elements
+
+                const inputs = formInputsToObject({
+                  elements,
+                })
+```
+
+```jsx
   const getWindowWidth = () => {
     return (
       window?.innerWidth ||
